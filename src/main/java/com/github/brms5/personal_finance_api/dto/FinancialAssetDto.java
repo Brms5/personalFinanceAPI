@@ -1,24 +1,18 @@
-package com.github.brms5.personal_finance_api.entity;
+package com.github.brms5.personal_finance_api.dto;
 
 import com.github.brms5.personal_finance_api.enums.FinancialAssetTypeEnum;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Document(collection = "financial_assets")
 @Getter
 @Setter
 @Builder
-public class FinancialAssetEntity {
-
-    @Id
-    private String id;
+public class FinancialAssetDto {
 
     private String accountId;
 

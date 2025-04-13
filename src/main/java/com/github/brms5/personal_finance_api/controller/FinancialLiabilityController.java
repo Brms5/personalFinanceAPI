@@ -21,8 +21,8 @@ public class FinancialLiabilityController {
 
     private final FinancialLiabilityService financialLiabilityService;
 
-    @PostMapping("/financial-liability")
-    public ResponseEntity<FinancialLiabilityResponse> addFinancialLiability(@RequestBody @Valid FinancialLiabilityResquest financialLiabilityResquest) {
+    @PostMapping("/createNewFinancialLiability")
+    public ResponseEntity<FinancialLiabilityResponse> createFinancialLiability(@RequestBody @Valid FinancialLiabilityResquest financialLiabilityResquest) {
         FinancialLiabilityDto financialLiabilityDto = FinancialLiabilityDtoMapper.mapToDto(financialLiabilityResquest);
         financialLiabilityService.addFinancialLiability(financialLiabilityDto);
 
