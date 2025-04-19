@@ -28,7 +28,7 @@ public class FinancialAssetController {
         FinancialAssetDto financialAssetDto = FinancialAssetDtoMapper.mapCreateRequestToDto(financialAssetCreateRequest);
         FinancialAssetDto response = financialAssetService.addFinancialAsset(financialAssetDto);
 
-        return ResponseEntity.ok(FinancialAssetResponseMapper.mapToResponse(response));
+        return ResponseEntity.ok(FinancialAssetResponseMapper.mapDtoToResponse(response));
     }
 
     @GetMapping("/account/{accountId}/reference-month/{referenceMonth}")
@@ -41,7 +41,7 @@ public class FinancialAssetController {
 
         List<FinancialAssetDto> financialAssets = financialAssetService.getAllFinancialAssetsByAccountIdAndReferenceMonth(financialAssetDto);
         List<FinancialAssetResponse> response = financialAssets.stream()
-                .map(FinancialAssetResponseMapper::mapToResponse)
+                .map(FinancialAssetResponseMapper::mapDtoToResponse)
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(response);
@@ -51,6 +51,6 @@ public class FinancialAssetController {
     public ResponseEntity<FinancialAssetResponse> updateFinancialAsset(@RequestBody @Valid FinancialAssetUpdateRequest financialAssetUpdateRequest) {
         FinancialAssetDto updatedFinancialAsset = financialAssetService.updateFinancialAsset(
                 FinancialAssetDtoMapper.mapUpdateRequestToDto(financialAssetUpdateRequest));
-        return ResponseEntity.ok(FinancialAssetResponseMapper.mapToResponse(updatedFinancialAsset));
+        return ResponseEntity.ok(FinancialAssetResponseMapper.mapDtoToResponse(updatedFinancialAsset));
     }
 }

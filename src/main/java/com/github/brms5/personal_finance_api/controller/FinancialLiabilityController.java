@@ -28,7 +28,7 @@ public class FinancialLiabilityController {
         FinancialLiabilityDto financialLiabilityDto = FinancialLiabilityDtoMapper.mapCreateRequestToDto(financialLiabilityCreateRequest);
         FinancialLiabilityDto response = financialLiabilityService.addFinancialLiability(financialLiabilityDto);
 
-        return ResponseEntity.ok(FinancialLiabilityResponseMapper.mapToResponse(response));
+        return ResponseEntity.ok(FinancialLiabilityResponseMapper.mapDtoToResponse(response));
     }
 
     @GetMapping("/account/{accountId}/reference-month/{referenceMonth}")
@@ -41,7 +41,7 @@ public class FinancialLiabilityController {
 
         List<FinancialLiabilityDto> financialLiabilities = financialLiabilityService.getAllFinanceLiabilityByAccountIdAndReferenceMonth(financialLiabilityDto);
         List<FinancialLiabilityResponse> response = financialLiabilities.stream()
-                .map(FinancialLiabilityResponseMapper::mapToResponse)
+                .map(FinancialLiabilityResponseMapper::mapDtoToResponse)
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(response);
@@ -51,6 +51,6 @@ public class FinancialLiabilityController {
     public ResponseEntity<FinancialLiabilityResponse> updateFinancialLiability(@RequestBody @Valid FinancialLiabilityUpdateRequest financialLiabilityUpdateRequest) {
         FinancialLiabilityDto updatedFinancialLiability = financialLiabilityService.updateFinancialLiability(
                 FinancialLiabilityDtoMapper.mapUpdateRequestToDto(financialLiabilityUpdateRequest));
-        return ResponseEntity.ok(FinancialLiabilityResponseMapper.mapToResponse(updatedFinancialLiability));
+        return ResponseEntity.ok(FinancialLiabilityResponseMapper.mapDtoToResponse(updatedFinancialLiability));
     }
 }

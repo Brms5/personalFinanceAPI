@@ -15,6 +15,7 @@ import java.time.Month;
 @Builder
 public class FinancialAssetResponse {
 
+    private String id;
     private String accountId;
     private Month referenceMonth;
     private String name;

@@ -5,8 +5,9 @@ import com.github.brms5.personal_finance_api.dto.FinancialLiabilityDto;
 
 public class FinancialLiabilityResponseMapper {
 
-    public static FinancialLiabilityResponse mapToResponse(FinancialLiabilityDto dto) {
+    public static FinancialLiabilityResponse mapDtoToResponse(FinancialLiabilityDto dto) {
         return FinancialLiabilityResponse.builder()
+                .id(dto.getId())
                 .accountId(dto.getAccountId())
                 .referenceMonth(dto.getReferenceMonth())
                 .name(dto.getName())

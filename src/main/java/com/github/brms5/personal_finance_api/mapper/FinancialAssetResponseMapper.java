@@ -5,8 +5,9 @@ import com.github.brms5.personal_finance_api.dto.FinancialAssetDto;
 
 public class FinancialAssetResponseMapper {
 
-    public static FinancialAssetResponse mapToResponse(FinancialAssetDto financialAssetDto) {
+    public static FinancialAssetResponse mapDtoToResponse(FinancialAssetDto financialAssetDto) {
         return FinancialAssetResponse.builder()
+                .id(financialAssetDto.getId())
                 .accountId(financialAssetDto.getAccountId())
                 .referenceMonth(financialAssetDto.getReferenceMonth())
                 .name(financialAssetDto.getName())
