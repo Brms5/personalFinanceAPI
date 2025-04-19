@@ -9,117 +9,146 @@
     <schema id="4" parent="1" name="local"/>
     <schema id="5" parent="1" name="personal_finance">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-04-19.12:26:22</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-04-19.19:41:19</LastIntrospectionLocalTimestamp>
     </schema>
     <table id="6" parent="5" name="financial_assets"/>
     <table id="7" parent="5" name="financial_liabilities"/>
-    <column id="8" parent="6" name="_id">
+    <table id="8" parent="5" name="inflation_index"/>
+    <column id="9" parent="6" name="_id">
       <Position>1</Position>
       <StoredType>ObjectId|12s</StoredType>
     </column>
-    <column id="9" parent="6" name="accountId">
+    <column id="10" parent="6" name="accountId">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="10" parent="6" name="acquisitionDate">
+    <column id="11" parent="6" name="acquisitionDate">
       <Position>1</Position>
       <StoredType>ISODate|91s</StoredType>
     </column>
-    <column id="11" parent="6" name="institution">
+    <column id="12" parent="6" name="institution">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="12" parent="6" name="name">
+    <column id="13" parent="6" name="name">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="13" parent="6" name="notes">
+    <column id="14" parent="6" name="notes">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="14" parent="6" name="referenceMonth">
+    <column id="15" parent="6" name="referenceMonth">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="15" parent="6" name="type">
+    <column id="16" parent="6" name="type">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="16" parent="6" name="updatedAt">
+    <column id="17" parent="6" name="updatedAt">
       <Position>1</Position>
       <StoredType>ISODate|91s</StoredType>
     </column>
-    <column id="17" parent="6" name="value">
+    <column id="18" parent="6" name="value">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="18" parent="6" name="_class">
+    <column id="19" parent="6" name="_class">
       <Position>2</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="19" parent="6" name="createdAt">
+    <column id="20" parent="6" name="createdAt">
       <Position>2</Position>
       <StoredType>ISODate|91s</StoredType>
     </column>
-    <column id="20" parent="7" name="_id">
+    <column id="21" parent="7" name="_id">
       <Position>1</Position>
       <StoredType>ObjectId|12s</StoredType>
     </column>
-    <column id="21" parent="7" name="_class">
+    <column id="22" parent="7" name="_class">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="22" parent="7" name="accountId">
+    <column id="23" parent="7" name="accountId">
       <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="23" parent="7" name="createdAt">
-      <Position>1</Position>
-      <StoredType>ISODate|91s</StoredType>
-    </column>
-    <column id="24" parent="7" name="interestRate">
-      <Position>1</Position>
-      <StoredType>String|12s</StoredType>
-    </column>
-    <column id="25" parent="7" name="name">
-      <Position>1</Position>
-      <StoredType>String|12s</StoredType>
-    </column>
-    <column id="26" parent="7" name="notes">
-      <Position>1</Position>
-      <StoredType>String|12s</StoredType>
-    </column>
-    <column id="27" parent="7" name="referenceMonth">
-      <Position>1</Position>
-      <StoredType>String|12s</StoredType>
-    </column>
-    <column id="28" parent="7" name="type">
-      <Position>1</Position>
-      <StoredType>String|12s</StoredType>
-    </column>
-    <column id="29" parent="7" name="updatedAt">
+    <column id="24" parent="7" name="createdAt">
       <Position>1</Position>
       <StoredType>ISODate|91s</StoredType>
     </column>
-    <column id="30" parent="7" name="creditor">
-      <Position>2</Position>
+    <column id="25" parent="7" name="interestRate">
+      <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="31" parent="7" name="remainingAmount">
-      <Position>2</Position>
+    <column id="26" parent="7" name="name">
+      <Position>1</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="32" parent="7" name="installments">
-      <Position>3</Position>
+    <column id="27" parent="7" name="notes">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="28" parent="7" name="referenceMonth">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="29" parent="7" name="type">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="30" parent="7" name="updatedAt">
+      <Position>1</Position>
+      <StoredType>ISODate|91s</StoredType>
+    </column>
+    <column id="31" parent="7" name="installments">
+      <Position>1</Position>
       <StoredType>Int32|4s</StoredType>
     </column>
-    <column id="33" parent="7" name="status">
+    <column id="32" parent="7" name="creditor">
+      <Position>2</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="33" parent="7" name="remainingAmount">
+      <Position>2</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="34" parent="7" name="status">
       <Position>3</Position>
       <StoredType>String|12s</StoredType>
     </column>
-    <column id="34" parent="7" name="totalAmount">
+    <column id="35" parent="7" name="totalAmount">
       <Position>4</Position>
       <StoredType>String|12s</StoredType>
+    </column>
+    <column id="36" parent="8" name="_id">
+      <Position>1</Position>
+      <StoredType>ObjectId|12s</StoredType>
+    </column>
+    <column id="37" parent="8" name="_class">
+      <Position>1</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="38" parent="8" name="createdAt">
+      <Position>1</Position>
+      <StoredType>ISODate|91s</StoredType>
+    </column>
+    <column id="39" parent="8" name="date">
+      <Position>1</Position>
+      <StoredType>ISODate|91s</StoredType>
+    </column>
+    <column id="40" parent="8" name="updatedAt">
+      <Position>1</Position>
+      <StoredType>ISODate|91s</StoredType>
+    </column>
+    <column id="41" parent="8" name="indexType">
+      <Position>2</Position>
+      <StoredType>String|12s</StoredType>
+    </column>
+    <column id="42" parent="8" name="indexValue">
+      <Position>3</Position>
+      <StoredType>Double|8s</StoredType>
     </column>
   </database-model>
 </dataSource>
