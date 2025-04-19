@@ -8,14 +8,18 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Month;
 
 @Getter
 @Setter
 @Builder
-public class FinancialAssetRequest {
+public class FinancialAssetCreateRequest {
 
     @NotNull(message = "Account ID cannot be null")
     private String accountId;
+
+    @NotNull(message = "Reference month cannot be null")
+    private Month referenceMonth;
 
     @NotNull(message = "Name cannot be null")
     private String name;
@@ -26,17 +30,11 @@ public class FinancialAssetRequest {
     @NotNull(message = "Value cannot be null")
     private BigDecimal value;
 
-    @NotNull(message = "Currency cannot be null")
-    private String currency;
-
     @NotNull(message = "Acquisition date cannot be null")
     private LocalDate acquisitionDate;
 
     @NotNull(message = "Institution cannot be null")
     private String institution;
-
-    @NotNull(message = "Is liquid cannot be null")
-    private boolean isLiquid;
 
     private String notes;
 }

@@ -8,21 +8,21 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 @Getter
 @Setter
 @Builder
 public class FinancialAssetDto {
 
+    private String id;
     private String accountId;
-
+    private Month referenceMonth;
     private String name;
     private FinancialAssetTypeEnum type;
     private BigDecimal value;
-    private String currency;
     private LocalDate acquisitionDate;
     private String institution;
-    private boolean isLiquid;
     private String notes;
 
     private LocalDateTime createdAt;

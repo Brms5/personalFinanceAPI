@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Document(collection = "financial_balances")
 @Getter
@@ -22,5 +22,10 @@ public class FinancialBalanceEntity {
     private BigDecimal totalLiabilities;
     private BigDecimal netWorth;
 
-    private LocalDate calculationDate;
+    private Integer monthlyInflation;
+    private Integer accumulatedInflationToSurpass;
+
+    private BigDecimal totalBalance;
+
+    private LocalDateTime calculationDate;
 }
