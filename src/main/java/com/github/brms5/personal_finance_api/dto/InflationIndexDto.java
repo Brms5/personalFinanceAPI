@@ -1,23 +1,17 @@
-package com.github.brms5.personal_finance_api.entity;
+package com.github.brms5.personal_finance_api.dto;
 
 import com.github.brms5.personal_finance_api.enums.IndexType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Document(collection = "inflation_index")
 @Getter
 @Setter
 @Builder
-public class InflationIndexEntity {
-
-    @Id
-    private String id;
+public class InflationIndexDto {
 
     private LocalDate date;
     private Double indexValue;
