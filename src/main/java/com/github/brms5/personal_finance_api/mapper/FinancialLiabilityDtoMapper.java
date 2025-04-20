@@ -47,6 +47,7 @@ public class FinancialLiabilityDtoMapper {
 
     public static FinancialLiabilityDto mapEntityToDto(FinancialLiabilityEntity financialLiabilityEntity) {
         return FinancialLiabilityDto.builder()
+                .id(financialLiabilityEntity.getId())
                 .accountId(financialLiabilityEntity.getAccountId())
                 .referenceMonth(financialLiabilityEntity.getReferenceMonth())
                 .name(financialLiabilityEntity.getName())

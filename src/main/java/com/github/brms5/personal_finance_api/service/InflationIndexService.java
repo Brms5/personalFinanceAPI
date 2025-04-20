@@ -37,6 +37,15 @@ public class InflationIndexService {
                 .toList();
     }
 
+    public List<InflationIndexDto> getInflationIndexByDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate parsedDate = LocalDate.parse(date, formatter);
+        return inflationIndexRepository.findByDate(parsedDate)
+                .stream()
+                .map(InflationIndexDtoMapper::mapEntityToDto)
+                .toList();
+    }
+
     private Boolean isInflationIndexAlreadySaved(String startDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate date = LocalDate.parse(startDate, formatter);

@@ -53,4 +53,10 @@ public class FinancialAssetController {
                 FinancialAssetDtoMapper.mapUpdateRequestToDto(financialAssetUpdateRequest));
         return ResponseEntity.ok(FinancialAssetResponseMapper.mapDtoToResponse(updatedFinancialAsset));
     }
+
+    @DeleteMapping("/deleteFinancialAsset/{id}/account/{accountId}/reference-month/{referenceMonth}")
+    public ResponseEntity<Void> deleteFinancialAsset(@PathVariable String id, @PathVariable String accountId, @PathVariable Month referenceMonth) {
+        financialAssetService.deleteFinancialAsset(id, accountId, referenceMonth);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -39,7 +39,7 @@ public class FinancialLiabilityController {
                 .referenceMonth(referenceMonth)
                 .build();
 
-        List<FinancialLiabilityDto> financialLiabilities = financialLiabilityService.getAllFinanceLiabilityByAccountIdAndReferenceMonth(financialLiabilityDto);
+        List<FinancialLiabilityDto> financialLiabilities = financialLiabilityService.getAllFinancialLiabilityByAccountIdAndReferenceMonth(financialLiabilityDto);
         List<FinancialLiabilityResponse> response = financialLiabilities.stream()
                 .map(FinancialLiabilityResponseMapper::mapDtoToResponse)
                 .collect(Collectors.toList());
@@ -52,5 +52,11 @@ public class FinancialLiabilityController {
         FinancialLiabilityDto updatedFinancialLiability = financialLiabilityService.updateFinancialLiability(
                 FinancialLiabilityDtoMapper.mapUpdateRequestToDto(financialLiabilityUpdateRequest));
         return ResponseEntity.ok(FinancialLiabilityResponseMapper.mapDtoToResponse(updatedFinancialLiability));
+    }
+
+    @DeleteMapping("/deleteFinancialLiability/{id}/account/{accountId}/reference-month/{referenceMonth}")
+    public ResponseEntity<Void> deleteFinancialLiability(@PathVariable String id, @PathVariable String accountId, @PathVariable Month referenceMonth) {
+        financialLiabilityService.deleteFinancialLiability(id, accountId, referenceMonth);
+        return ResponseEntity.noContent().build();
     }
 }

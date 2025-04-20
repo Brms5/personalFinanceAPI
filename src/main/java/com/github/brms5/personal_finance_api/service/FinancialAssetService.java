@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,9 +18,11 @@ import java.util.stream.Collectors;
 public class FinancialAssetService {
 
     private final FinancialAssetRepository financialAssetRepository;
+    private final FinancialBalanceService financialBalanceService;
 
     public FinancialAssetDto addFinancialAsset(FinancialAssetDto financialAssetDto) {
         FinancialAssetEntity financialAssetEntity = financialAssetRepository.save(FinancialAssetEntityMapper.mapToEntity(financialAssetDto));
+        financialBalanceService.handleFinancialBalance(financialAssetDto.getAccountId(), financialAssetDto.getReferenceMonth());
         return FinancialAssetDtoMapper.mapEntityToDto(financialAssetEntity);
     }
 
@@ -43,6 +46,15 @@ public class FinancialAssetService {
         financialAssetEntity.setNotes(financialAssetDto.getNotes());
         financialAssetEntity.setUpdatedAt(LocalDateTime.now());
 
-        return FinancialAssetDtoMapper.mapEntityToDto(financialAssetRepository.save(financialAssetEntity));
+        financialAssetRepository.save(financialAssetEntity);
+
+        financialBalanceService.handleFinancialBalance(financialAssetDto.getAccountId(), financialAssetDto.getReferenceMonth());
+
+        return FinancialAssetDtoMapper.mapEntityToDto(financialAssetEntity);
+    }
+
+    public void deleteFinancialAsset(String id, String accountId, Month referenceMonth) {
+        financialAssetRepository.deleteById(id);
+        financialBalanceService.handleFinancialBalance(accountId, referenceMonth);
     }
 }

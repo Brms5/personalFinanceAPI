@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 @Service
@@ -16,13 +17,15 @@ import java.util.List;
 public class FinancialLiabilityService {
 
     private final FinancialLiabilityRepository financialLiabilityRepository;
+    private final FinancialBalanceService financialBalanceService;
 
     public FinancialLiabilityDto addFinancialLiability(FinancialLiabilityDto financialLiabilityDto) {
         FinancialLiabilityEntity financialLiabilityEntity = financialLiabilityRepository.save(FinancialLiabilityEntityMapper.mapToEntity(financialLiabilityDto));
+        financialBalanceService.handleFinancialBalance(financialLiabilityDto.getAccountId(), financialLiabilityDto.getReferenceMonth());
         return FinancialLiabilityDtoMapper.mapEntityToDto(financialLiabilityEntity);
     }
 
-    public List<FinancialLiabilityDto> getAllFinanceLiabilityByAccountIdAndReferenceMonth(FinancialLiabilityDto financialLiabilityDto) {
+    public List<FinancialLiabilityDto> getAllFinancialLiabilityByAccountIdAndReferenceMonth(FinancialLiabilityDto financialLiabilityDto) {
         List<FinancialLiabilityEntity> financialLiabilityEntities = financialLiabilityRepository.findAllByAccountIdAndReferenceMonth(
                 financialLiabilityDto.getAccountId(), financialLiabilityDto.getReferenceMonth());
         return financialLiabilityEntities.stream()
@@ -45,6 +48,15 @@ public class FinancialLiabilityService {
         financialLiabilityEntity.setNotes(financialLiabilityDto.getNotes());
         financialLiabilityEntity.setUpdatedAt(LocalDateTime.now());
 
-        return FinancialLiabilityDtoMapper.mapEntityToDto(financialLiabilityRepository.save(financialLiabilityEntity));
+        financialLiabilityRepository.save(financialLiabilityEntity);
+
+        financialBalanceService.handleFinancialBalance(financialLiabilityDto.getAccountId(), financialLiabilityDto.getReferenceMonth());
+
+        return FinancialLiabilityDtoMapper.mapEntityToDto(financialLiabilityEntity);
+    }
+
+    public void deleteFinancialLiability(String id, String accountId, Month referenceMonth) {
+        financialLiabilityRepository.deleteById(id);
+        financialBalanceService.handleFinancialBalance(accountId, referenceMonth);
     }
 }
